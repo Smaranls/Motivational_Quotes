@@ -2,44 +2,47 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - docker-setup
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+  workflow_dispatch:       # <--- Added this to allow manual runs
 
 jobs:
-  build-and-test:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Lint with flake8
-        run: |
           pip install flake8
-          flake8 .
+
+      - name: Run linter
+        run: flake8 .
 
       - name: Run tests
-        run: |
-          pytest || echo "No tests found"
+        run: pytest
 
   docker-build:
+    needs: build-test
     runs-on: ubuntu-latest
-    needs: build-and-test
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Build Docker image
         run: docker build -t motivational-quotes-api .
