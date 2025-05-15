@@ -1,7 +1,8 @@
 import pytest
-from httpx import AsyncClient
-from httpx import ASGITransport
+from httpx import ASGITransport, AsyncClient
+
 from app.main import app
+
 
 @pytest.mark.asyncio
 async def test_get_quote():
