@@ -1,4 +1,4 @@
- Motivational Quotes API
+## Motivational Quotes API
 
 Welcome to the **Motivational Quotes API** — a simple yet powerful RESTful API that delivers inspirational and motivational quotes programmatically.
 
