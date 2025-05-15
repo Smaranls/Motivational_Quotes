@@ -6,7 +6,7 @@ Overview
 
 This is a small FastAPI-based microservice built to demonstrate the application of the 12-Factor App principles.
 
-The app offers a simple utility (e.g., health check endpoint or a basic calculator) and follows best practices including environment-based configuration, containerization, automated testing, CI/CD, and clear documentation.
+The app offers a simple utility displaying motivational quotes and follows best practices including environment-based configuration, containerization, automated testing, CI/CD, and clear documentation.
 
 
 
