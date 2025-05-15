@@ -29,26 +29,28 @@ Built using **FastAPI** for high performance and ease of development, the projec
 git clone https://github.com/yourusername/motivational-quotes-api.git
 cd motivational-quotes-api
 
-###2.  Set up virtual environment and install dependencies
+### 2.  Set up virtual environment and install dependencies
 
 python -m venv venv
 source venv/bin/activate   # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 
-###3.  Run the FastAPI app locally
+### 3.  Run the FastAPI app locally
 
 uvicorn main:app --reload
-
+---
 ## How to Run Using Docker
 
 ### 1. Build the Docker image
 
 docker build -t motivational-quotes-api .
 
-###2.  Run the Docker container
+### 2.  Run the Docker container
 
 docker run -p 8000:8000 motivational-quotes-api
 
-###3. Access the API
+### 3. Access the API
 
 http://localhost:8000/docs
+
+---
