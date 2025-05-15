@@ -37,7 +37,7 @@ pip install -r requirements.txt
 
 ### 3.  Run the FastAPI app locally
 
-```uvicorn main:app --reload`
+uvicorn main:app --reload
 ---
 ## How to Run Using Docker
 
