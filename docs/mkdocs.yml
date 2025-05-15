@@ -1,0 +1,5 @@
+
+site_name: Motivational Quotes API
+nav:
+  - Home: index.md
+theme: readthedocs
