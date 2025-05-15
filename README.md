@@ -1,56 +1,208 @@
-## Motivational Quotes API
+12-Factor FastAPI Microservice
 
-Welcome to the **Motivational Quotes API** — a simple yet powerful RESTful API that delivers inspirational and motivational quotes programmatically.
 
----
 
-## What This Project Does
+Overview
 
-This API serves motivational quotes in JSON format to help developers, educators, and enthusiasts add daily inspiration into their applications, websites, or services.
+This is a small FastAPI-based microservice built to demonstrate the application of the 12-Factor App principles.
 
-Built using **FastAPI** for high performance and ease of development, the project is fully **Dockerized** for consistent deployment and uses **GitHub Actions** for automated testing, linting, and Docker image builds. Documentation is powered by **MkDocs** for easy navigation and clarity.
+The app offers a simple utility (e.g., health check endpoint or a basic calculator) and follows best practices including environment-based configuration, containerization, automated testing, CI/CD, and clear documentation.
 
----
 
-## Features
 
-- RESTful API delivering motivational quotes as JSON  
-- FastAPI backend for fast, asynchronous, and easy development  
-- Dockerized for consistent and simple deployment  
-- Automated CI/CD with GitHub Actions for testing, linting, and building Docker images  
-- Comprehensive documentation using MkDocs  
+Features
 
----
+- Configuration via environment variables using Pydantic
+- Clear, modular project structure
+- Git with branching strategy and pre-commit hooks
+- Unit testing with pytest
+- Dockerized for easy deployment
+- GitHub Actions for CI (linting, tests, Docker build)
+- Basic documentation included
 
-## How to Run Locally
 
-### 1. Clone the repository
+Getting Started
 
-git clone https://github.com/yourusername/motivational-quotes-api.git
-cd motivational-quotes-api
 
-### 2.  Set up virtual environment and install dependencies
+
+Prerequisites
+
+- Python 3.9+
+- Docker (optional, but recommended)
+- Git
+
+
+Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+```
+cd your-repo-name
+
+
+
+Running Locally
+
+
+
+### 1. Create a virtual environment and activate it
 
 python -m venv venv
-source venv/bin/activate   # On Windows use: venv\Scripts\activate
+
+```bash
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+```
+
+
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-### 3.  Run the FastAPI app locally
 
-uvicorn main:app --reload
----
-## How to Run Using Docker
+### 3. Set environment variables (example)
+
+```bash
+export APP_ENV=development
+```
+```bash
+export API_KEY=your_api_key_here
+```
+
+
+### 4. Run the FastAPI app
+
+```bash
+uvicorn app.main:app --reload
+```
+
+
+5. Access the app at http://127.0.0.1:8000
+
+
+
+6. Open API docs at http://127.0.0.1:8000/docs
+
+
+
+Running with Docker
+
+
 
 ### 1. Build the Docker image
 
-docker build -t motivational-quotes-api .
+```bash
+docker build -t fastapi-12factor-app .
+```
 
-### 2.  Run the Docker container
 
-docker run -p 8000:8000 motivational-quotes-api
+### 2. Run the container
 
-### 3. Access the API
+```bash
+docker run -d -p 8000:8000 --env-file .env fastapi-12factor-app
+```
 
-http://localhost:8000/docs
 
----
+3. Visit http://localhost:8000 or http://localhost:8000/docs
+
+
+
+Configuration
+
+
+
+All configuration is managed via environment variables and validated using Pydantic settings.
+
+
+
+### Example environment variables
+
+- APP_ENV (development, production)
+## - API_KEY
+
+- DATABASE_URL (if applicable)
+
+
+Use a .env file or your system environment to manage these values.
+
+
+
+Testing
+
+
+
+### Run tests with pytest
+
+
+
+```bash
+pytest tests/
+```
+
+
+Tests include unit and integration tests to verify functionality.
+
+
+
+## CI/CD
+
+
+
+### GitHub Actions workflows run automatically on push to
+
+- Lint code with flake8
+- Run tests with pytest
+- Build Docker image
+
+
+Check .github/workflows/ci.yml for workflow details.
+
+
+
+Project Structure
+
+
+
+.
+
+├── app/
+
+│   ├── main.py          # FastAPI entrypoint
+
+│   ├── config.py        # Configuration management with Pydantic
+
+│   ├── api/             # API route modules
+
+│   ├── services/        # Business logic / utility functions
+
+│   └── tests/           # Test cases
+
+├── Dockerfile
+
+├── docker-compose.yml
+
+├── requirements.txt
+
+├── .env.example         # Sample env file
+
+├── .pre-commit-config.yaml
+
+├── README.md
+
+└── .github/
+
+└── workflows/
+
+└── ci.yml      # GitHub Actions workflow
+
+
+
+VSCode Configuration (Optional)
+
+
+
+VSCode settings and recommended extensions are included in .vscode/ for consistent development experience.
+
+
+Thank you for checking out this 12-Factor FastAPI project! 🚀
