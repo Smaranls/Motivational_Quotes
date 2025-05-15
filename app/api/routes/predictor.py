@@ -1,6 +1,6 @@
 import httpx
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+
 from app.models.quote import Quote
 
 router = APIRouter()
@@ -18,5 +18,5 @@ async def get_motivational_quote():
             quote_text = data[0]["q"]
             author = data[0]["a"]
             return Quote(quote=quote_text, author=author)
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500, detail="Error fetching quote")
