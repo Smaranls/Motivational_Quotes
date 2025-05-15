@@ -1,8 +1,11 @@
-import sys
 import logging
+import sys
+
 from loguru import logger
 from pydantic_settings import BaseSettings
+
 from app.core.logging import InterceptHandler
+
 
 class Settings(BaseSettings):
     API_PREFIX: str = "/api"
@@ -13,6 +16,7 @@ class Settings(BaseSettings):
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
+
 
 settings = Settings()
 
